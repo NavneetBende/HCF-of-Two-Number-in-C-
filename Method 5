@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+// This method improves complexity of repeated substraction
+// By efficient use of modulo operator in euclidean algorithm
+int getHCF(int a, int b)
+{
+    return b == 0 ? a : getHCF(b, a % b); 
+}
+
+int main()
+{
+    int num1 = -36, num2 = 60;
+
+    // if user enters negative number, we just changing it to positive
+    // By definition HCF is highest positive number that divides both numbers
+    // -36 & 60 : HCF = 12 (as highest num that divides both)
+    // -36 & -60 : HCF = 16 (as highest num that divides both)
+    num1 = (num1 > 0) ? num1 : -num1;
+    num2 = (num2 > 0) ? num2 : -num2;
+    
+    cout<<"HCF of "<<num1<<" and "<<num2<<" is "<<getHCF(num1, num2);
+    
+    return 0;
+}
+// Time Complexity: log(max(a,b))
